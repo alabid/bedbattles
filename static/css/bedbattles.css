@@ -16,7 +16,7 @@ p {
 	margin: 1em 0 0.8em;
 }
 #main .content {
-	background: transparent url("images/wallpaper.jpg");
+	background: transparent url("/img/wallpaper.jpg");
 	margin-top: 10%;
 	-webkit-border-radius: 15px; 
 	-moz-border-radius: 15px;
@@ -34,7 +34,7 @@ p {
 	clear:both;
 }
 #main .inner {
-	background: transparent url("images/") 300% 0 repeat-x;
+	background: transparent url("/img/") 300% 0 repeat-x;
 }
 }
 #main .content #challenge {
@@ -42,7 +42,7 @@ p {
 	float: left;
 	margin-top: 0;
 	width: 60%;
-	background: transparent url("images/") 2px 0 no-repeat;
+	background: transparent url("/img/") 2px 0 no-repeat;
 }
 #main .content #challenge h2 {
 	margin:0;
