@@ -169,7 +169,7 @@ this.run = function() {
 	    method: "feed",
 	    name: "Sleepy sleepy wakeee wakeeeee",
 	    link: "http://freezing-day-7773.herokuapp.com/register/",
-	    picture: "/static/img/sleepy.jpg",
+	    picture: "http://freezing-day-7773.herokuapp.com/static/img/sleepy.jpg",
 	    caption: "I'm challging whoever to bed battle at 9:05am " + walltext, // fill in this later
 	    description: "Check out my challenge on bed battle",
 	    properties: { "Name": currentUserName},
