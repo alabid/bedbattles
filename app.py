@@ -31,6 +31,9 @@ def register():
 	except:
 		return "failure"
 		
+@app.route('/sms/<uid>', methods=['GET', 'POST'])
+def sms(uid):
+	return "testing"
 
 if __name__ == '__main__':
 	port = int(os.environ.get('PORT', 55641))
