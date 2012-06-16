@@ -41,7 +41,21 @@ def sms(uid):
 		token = "bb5de69f671b98f875277f69c0d0b497"
 		client = TwilioRestClient(account, token)
 
-		message = client.sms.messages.create(to="+19145884793", from_="+14155992671", body="Good morning!")
+		post = {"name": username, "uid": uid, "email": email}
+		connection = Connection("mongodb://heroku:54cce0fe06c2ec87c6c0ede29923b6e0@flame.mongohq.com:27028/app5293195")
+		db = connection.app5293195
+		battles = db.battles
+		users = db.users
+		battle = battles.find_one({$or : [ {"user1" : uid}, {"user2": uid} ]})
+		if battle['user1'] == uid:
+			opponentid = battle['user2']
+		if battle['user2'] == uid:
+			opponentid = battle['user1']
+
+		opponentdoc = users.find_one({'uid' : opponentid})
+		opponent = opponentdoc['name']
+		challengeurl = 'void'
+		message = client.sms.messages.create(to="+19145884793", from_="+14155992671", body="Good morning! Start your BedBattle with "+opponent+": "+challengeURL)
 		return "success"
 	#except:
 		#return "failure"
