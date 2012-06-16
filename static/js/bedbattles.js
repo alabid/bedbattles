@@ -53,6 +53,7 @@ var reloadPageDetails = function() {
  */
 function fb_loads() {
     window.fbAsyncInit = function() {
+	
 	FB.init({ appId: '480811538600121',
 		  status: true, 
 		  cookie: true,
@@ -144,6 +145,10 @@ function fb_loads() {
 } // end of fb_loads function
 
 
+var _run = function() {
+    fb_loads();
+};
 
+_run(); // main method entry to application
 
 })();
