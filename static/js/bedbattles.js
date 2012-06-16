@@ -192,9 +192,9 @@ this.run = function() {
 	// $.post("/createbattle/", {current);
 	var id = "0000001";
 	var challengeUrl = "http://freezing-day-7773.herokuapp.com/bet/";
-	var b = encodeURIComponent("#Nowplaying bedbattles with " + "friends." + "check outt" + challengeUrl);
+	var b = encodeURIComponent("#Nowplaying bedbattles with " + "friends." + "check out " + challengeUrl);
 	var a = "http://twitter.com/share?url=" + challengeUrl +
-	    "&text=" + b;
+	    "&text=" + tweettext;
 	showPop(a, "Bed Battles share on Twitter");
 
 	return false;
