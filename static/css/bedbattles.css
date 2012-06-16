@@ -34,7 +34,7 @@ p {
 	clear:both;
 }
 body {
-    background: transparent url("/static/img/BedBattles.gif");
+    /* background: transparent url("/static/img/BedBattles.gif"); */
     background-repeat: none;
 }
 
