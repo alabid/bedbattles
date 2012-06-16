@@ -135,7 +135,7 @@ function fb_loads() {
 						      // just reload the page again
 						      reloadPageDetails();
 						  }
-					      }, {scope:'email, read_friendlists'});
+					      }, {scope:'email,read_friendlists,user_relationships,user_likes'});
 				     return false;  
 				 });
 		loginStatus.html(statusLink);
