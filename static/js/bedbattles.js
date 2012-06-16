@@ -88,6 +88,9 @@ function fb_loads() {
 			   
 			   statusLink.click(function() {
 						FB.logout(function(response) {
+							      console.log("another response: ");
+							      console.log(response);
+							      
 							      currentUser = "";
 							      currentUserEmail = "";
 							      
