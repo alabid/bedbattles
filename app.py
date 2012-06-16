@@ -2,6 +2,7 @@ import os
 
 from flask import Flask
 from flask import render_template
+from flask import request
 from pymongo import Connection
 from twilio.rest import TwilioRestClient
 app = Flask(__name__)
@@ -12,10 +13,11 @@ def hello():
 
 @app.route('/register/', methods=['GET', 'POST'])
 def register():
+	
 	try:
-	       	username = request.form['currentUserName']
-       		uid = request.form['currentUser']
-		email = request.form['currentUserEmail']
+	       	username = request.form.get('currentUserName')
+       		uid = request.form.get('currentUser')
+		email = request.form.get('currentUserEmail')
 		#username = "test"
 		#uid = 123456789
 		#email = "testemail"
