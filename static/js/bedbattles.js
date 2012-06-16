@@ -193,6 +193,7 @@ this.run = function() {
      * Share on twitter
      */
     this.twitterShare = function(tweettext) {
+	// $.post("/createbattle/", {current);
 	var id = "0000001";
 	var challengeUrl = "http://freezing-day-7773.herokuapp.com/battles/" + id;
 	var b = encodeURIComponent("#Nowplaying bedbattles with " + "friends." + " Hack 'n jill test");
@@ -211,7 +212,9 @@ this.run = function() {
 	var d = nameAssoc || "Helper Window";
 	var height = aheight || 450;
 	var width = awidth || 550;
-	
+
+	console.log("came into showpop");
+
 	var h = window.open(url, d, "height=" + height + ", width=" + width);
 	if (window.focus) {
       h.focus();	
