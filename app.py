@@ -7,7 +7,7 @@ from pymongo import Connection
 from twilio.rest import TwilioRestClient
 from datetime import datetime
 import urllib2
-import simplejson
+import json
 app = Flask(__name__)
 
 @app.route('/')
@@ -170,7 +170,7 @@ def fblookup(fbid):
 	req = urllib2.Request("https://graph.facebook.com/"+fbid)
 	opener = urllib2.build_opener()
 	f = opener.open(req)
-	x = simplejson.load(f)
+	x = json.load(f)
 	name = x['name']
 	return name
 
