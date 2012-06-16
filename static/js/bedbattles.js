@@ -153,6 +153,7 @@ this.run = function() {
     $(document).ready(function() {
 			  fb_loads();
 
+			  console.log(FB);
 			  // testing facebok sharing
 			  facebookShare("this is some sample text for the hackathon hacknjill");			  
 		      });
