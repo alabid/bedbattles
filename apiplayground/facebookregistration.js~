@@ -1,0 +1,136 @@
+/*
+ * registerInDatabase registers the currently loggedin user if
+ * he hasn't been already registered.
+ * 
+ * mapping:
+ * currentUser -> currentUsers
+ * currentUserEmail -> currentUsersEmail
+ * currentUserName -> currentUsersName
+ * 
+ */
+
+function registerInDatabase(currentUsers, currentUsersEmail, currentUsersName) {
+	if (currentUsers && currentUsersEmail) {
+		
+		var dataToSend = {
+			"currentUser" : currentUsers,
+			"currentUserEmail" : currentUsersEmail,
+			"currentUserName" : currentUsersName
+		};
+		
+		// now make an ajax call to the registrar
+		$.post("http://vidmuster.com/register_facebook_user.php", dataToSend , function (data) {
+				if (typeof data != "undefined") {
+									
+					switch (data)
+					{
+						case "successfully-added":
+											log("success! This user has been successfully added!");
+												break;
+						case "already-added-to-database":
+											log("already added to the db.");
+												break;
+						case "duplicate":   
+										log("This user has already been registered.");
+												break;
+						case "error":												
+										log("An error occured in the process of registering this user.");
+												break;
+				
+					}
+					
+					$("div.VideosAccordion").loadPlaylist();			
+				}
+			});
+			
+		
+	}
+	else log("dude, something went wrong!");
+}
+
+
+function fb_loads() {
+	window.fbAsyncInit = function() {
+		 
+  FB.init({ appId: '253703417992848', 
+	    status: true, 
+	    cookie: true,
+	    xfbml: true,
+	    oauth: true});
+function updateButton(response) {
+
+    var loginStatus = $("#login-status").html("");
+    var statusLink = $("<a />");
+    
+    if (response.authResponse) {
+
+      	FB.api('/me', function(response) {    		
+      		currentUser = response.username || "none";
+      		currentUserEmail = response.email;
+      		currentUserName = response.name;
+      		
+      		registerInDatabase(currentUser, currentUserEmail, currentUserName);
+      		
+      		$("div.VideosAccordion").loadPlaylist();
+      		
+      		statusLink.html("Logout").attr("href", "#")
+      							 .attr("class", "logout-link");
+      		loginStatus.html($("<span/>").attr("class", "welcome-message")
+    										.html("Welcome, " + response.name))
+    										.append(statusLink);							
+      	    statusLink.click(function () {
+      		  FB.logout(function(response) {
+      		  	currentUser = "";
+      		  	currentUserEmail = "";
+      		  	$("div.VideosAccordion").loadPlaylist()
+				updateButton(response);
+				//loginStatus.html(statusButton);		
+			  });
+      	   });
+      	});
+    } else {
+    	currentUser = "";
+    	currentUserEmail = "";
+    	$("div.VideosAccordion").loadPlaylist();
+      //user is not connected to your app or logged out
+        statusLink.html("Login With Facebook")
+        			.attr("href", "#")
+        			.attr("class", "login-button");
+        statusLink.click(function () {
+        	FB.login(function(response) {
+	  	      if (response.authResponse) {
+	  	      	 currentUser = response.username || "none";
+	  	      	 currentUserEmail = response.email;
+	  	      	 currentUserName = response.name;
+	  	      	 
+	  	      	 registerInDatabase(currentUser, currentUserEmail, currentUserName);
+	  	      	 
+	  	      	 $("div.VideosAccordion").loadPlaylist();
+	  	      	 
+                 updateButton(response);
+      			 //loginStatus.append($("<span/>").attr("class", "welcome-message")
+    				//							.html("Welcome, " + response.name))	
+			   } else {
+			   			  	// user canceled login or did not grant authorization
+			   }
+			}, {scope:'email'});
+			return false;
+		});
+       loginStatus.html(statusLink);
+  	 }
+  }
+  // run once with current status and whenever the status change
+  FB.getLoginStatus(updateButton);
+  FB.Event.subscribe('auth.statusChange', updateButton);	
+};
+	
+(function() {
+  var e = document.createElement('script'); e.async = true;
+  e.src = document.location.protocol 
+    + '//connect.facebook.net/en_US/all.js';
+  document.getElementById('fb-root').appendChild(e);
+}());
+	
+}
+
+
