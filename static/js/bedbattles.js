@@ -228,7 +228,7 @@ this.run = function() {
 
 
     this.sendPhone = function() {
-	$("form#phone-number").submit(function(){
+	$("button").click(function(){
 					  var phonenumber = $("#my-phone").val();
 					  var otherid = $("#other-fb-id").val();
 					  var towake = $("#to-wake").val();
