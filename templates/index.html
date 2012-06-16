@@ -19,17 +19,19 @@
   <div class="content">
   <div id="challenge">
   <h2>I Challenge:</h2>
-    <form id="phone-number">
+    <form id="phone-number" align="center">
       <input id="to-wake" class="input-small" type="tel" placeholder="Time to wake"></input>
       <input id="my-phone" class="input-small" type="tel" placeholder="My Phone"></input>
       <input id="other-fb-id" class="input-small" type="tel" placeholder="Challenger facebook id"></input>
       <button id="fake" onsubmit="bed_battles.sendPhone()" type="submit" class="btn">Set Up Challenge</button>
     </form>
 
+    <div align="center">
     <a href="javascript:bed_battles.twitterShare('I\'m challenging a friend on bed battles. Place  a bet!  ')">Share on Twitter</a>
     <br/>
     <br/>
     <a href="javascript:bed_battles.facebookShare('I\'m challenging a friend on bed battles. Place a bet! ')">Share on Facebook</a>
+</div>
     <div id="explain">
     <p>We'll send a text to your challenge buddy. </br> </br> Get ready to wake up!</p>
     </div> <!-- end explain -->
