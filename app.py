@@ -1,12 +1,13 @@
 import os
 
 from flask import Flask
+from flask import render_template
 from pymongo import Connection
 app = Flask(__name__)
 
 @app.route('/')
 def hello():
-	return flask.render_template("index.html")
+	return render_template("index.html")
 
 @app.route('/register/', methods=['POST'])
 def register():
