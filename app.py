@@ -23,8 +23,10 @@ def register():
 		db = connection.app5293195
 		users = db.users
 		duplicate = users.find_one({"uid": uid})
-		print(duplicate)
-		users.insert(post)
+		if not duplicate:
+			users.insert(post)
+		else:
+			return "duplicate"
 	except:
 		return "failure"
 	finally:
