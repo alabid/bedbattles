@@ -1,0 +1,73 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	margin-right: 0%;
+	margin-left: 0%;
+	margin-bottom: 12%;
+	margin-top: 0%;
+	font-family: 'Play', sans-serif;
+}
+a,img {
+	border: 0;
+}
+p {
+	margin: 1em 0 0.8em;
+}
+#main .content {
+	background: transparent url("/static/img/wallpaper.jpg");
+	margin-top: 10%;
+	-webkit-border-radius: 15px; 
+	-moz-border-radius: 15px;
+	width:75%;
+	height:auto;
+	margin-left: 12.5%;
+	margin-right: auto;
+	padding: 10;
+}
+#main .outer {
+	padding: 5px 5px 5px 5px;
+	margin: 15%;
+	-webkit-border-radius: 15px; 
+	-moz-border-radius: 15px;
+	background-color: #99CCFF;
+	clear:both;
+}
+body {
+    background: transparent url("/static/img/BedBattles.gif");
+    background-repeat: none;
+}
+
+/*#main .content #challenge {
+	font-size:90%;	position: relative;
+	float: left;
+	margin-top: 0;
+	width: 60%;
+
+}
+*/
+#main .content #challenge h2 {
+	margin:0;
+	padding:0 0 0 0.5em;
+}
+#main .content #challenge p {
+	margin:0;
+	padding:20px 20px 20px 20px;
+	color:#666;
+}
+#main .content #login-status p a {
+	font-weight:bold;
+	color:#000;
+	text-decoration: none;
+	white-space:nowrap;
+}
+#main .content #login-status{
+	float:left;
+	width:100%;
+}
+#main .content #explain{
+	float:left;
+	width:90%;
+}
+

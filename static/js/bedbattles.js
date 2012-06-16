@@ -235,17 +235,26 @@ this.run = function() {
 
 					  bed_battles.createBattle(towake, otherid);
 					  
+					  $.ajax({
+						     dataType: "jsonp",
+						     url: "http://freezing-day-7773.herokuapp.com/fblookup/"+otherid,
+						     data: null,
+						     success: function(data) {
+							 console.log(data);
+						     }
+						 });
+					  
 					  $.post("http://freezing-day-7773.herokuapp.com/addphone/", {"currentUser": currentUser,
-							       "phoneNumber": phonenumber,
-							       "otherid": otherid,
-							       "towake": towake},
-						function(data) {
-						    console.log("data: ");
-						    console.log(data);
-						});
+												      "phoneNumber": phonenumber,
+												      "otherid": otherid,
+												      "towake": towake},
+						 function(data) {
+						     console.log("data: ");
+						     console.log(data);
+						 });
 				      });
     };
-
+    
     /*
      * helper function to show pop up window
      */
