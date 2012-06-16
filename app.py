@@ -108,14 +108,17 @@ def visualize(battleid):
 	username1 = users.find_one({"uid": user1})["name"]
 	username2 = users.find_one({"uid": user2})["name"]
 	output = ""
-	output += username1+" vs "+username2+"<br />"
+	output += "<h1>"+username1+" vs "+username2+"</h1><br />"
 	wakeups = db.wakeups
+	p1win = False
+	p2win = False
 	#docs1 = wakeups.find({"$and": [{"uid": user1}, {"win": "true"}]})
 	docs1 = wakeups.find({"uid": user1})
 	output += "<p>"+username1+"'s wakeups:<br />"
 	for wakeup in docs1:
 		if wakeup["win"]=="true":
 			output += "WOKE UP! "
+			p1win = True
 		else:
 			output += "Fell back asleep: "
 		output += str(wakeup["month"])+"/"+str(wakeup["day"])+" at "+str(wakeup["hour"])+":"+str(wakeup["minute"])+"<br />"
@@ -126,10 +129,17 @@ def visualize(battleid):
 	for wakeup in docs2:
 		if wakeup["win"]=="true":
 			output += "WOKE UP! "
+			p2win = True
 		else:
 			output += "Fell back asleep: "
 		output += str(wakeup["month"])+"/"+str(wakeup["day"])+" at "+str(wakeup["hour"])+":"+str(wakeup["minute"])+"<br />"
 	output += "</p>"
+	if p1win and not p2win:
+		output += "<h3>"+username1+" wins!</h3>"
+	elif p2win and not p1win:
+		output += "<h3>"+username2+" wins!</h3>"
+	else:
+		output += "<h3>Game is in progress</h3>"
 	return output
 
 @app.route('/createbattle/', methods=['GET', 'POST'])
