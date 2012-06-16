@@ -174,6 +174,14 @@ def fblookup(fbid):
 	name = x['name']
 	return name
 
+@app.route('/bet/', methods=['GET', 'POST'])
+def bet():
+	x = request.form.get('challenger')
+	if(x):
+		return render_template('index.html')
+	else:
+		return render_template('venmo.html')
+
 if __name__ == '__main__':
 	port = int(os.environ.get('PORT', 55641))
 	app.run(debug=True, host='0.0.0.0', port=port)
