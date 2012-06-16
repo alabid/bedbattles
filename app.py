@@ -12,12 +12,12 @@ def hello():
 @app.route('/register/', methods=['GET', 'POST'])
 def register():
 	try:
-	       	# username = request.form['username']
-       		# uid = request.form['uid']
-		# email = request.form['email']
-		username = "test"
-		uid = 123456789
-		email = "testemail"
+	       	username = request.form['currentUserName']
+       		uid = request.form['currentUser']
+		email = request.form['currentUserEmail']
+		#username = "test"
+		#uid = 123456789
+		#email = "testemail"
 		post = {"name": username, "uid": uid, "email": email}
 		connection = Connection("mongodb://heroku:54cce0fe06c2ec87c6c0ede29923b6e0@flame.mongohq.com:27028/app5293195")
 		db = connection.app5293195
@@ -25,12 +25,11 @@ def register():
 		duplicate = users.find_one({"uid": uid})
 		if not duplicate:
 			users.insert(post)
+			return "success"
 		else:
 			return "duplicate"
 	except:
 		return "failure"
-	finally:
-		return "success"
 		
 
 if __name__ == '__main__':
