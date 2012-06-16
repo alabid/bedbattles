@@ -146,7 +146,7 @@ function fb_loads() {
 
 
 var _run = function() {
-    fb_loads();
+    $(document).ready(fb_loads);
 };
 
 _run(); // main method entry to application
