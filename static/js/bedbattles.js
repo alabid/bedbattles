@@ -228,31 +228,33 @@ this.run = function() {
 
 
     this.sendPhone = function() {
-	$("form#phone-number").submit(function(){
-					  var phonenumber = $("#my-phone").val();
-					  var otherid = $("#other-fb-id").val();
-					  var towake = $("#to-wake").val();
-
-					  bed_battles.createBattle(towake, otherid);
-					  
-					  $.ajax({
-						     dataType: "jsonp",
-						     url: "http://freezing-day-7773.herokuapp.com/fblookup/"+otherid,
-						     data: null,
-						     success: function(data) {
-							 console.log(data);
-						     }
-						 });
-					  
-					  $.post("http://freezing-day-7773.herokuapp.com/addphone/", {"currentUser": currentUser,
-												      "phoneNumber": phonenumber,
-												      "otherid": otherid,
-												      "towake": towake},
-						 function(data) {
-						     console.log("data: ");
-						     console.log(data);
-						 });
-				      });
+	$("button").click(function() {
+			      
+			      var phonenumber = $("#my-phone").val();
+			      var otherid = $("#other-fb-id").val();
+			      var towake = $("#to-wake").val();
+			      
+	      		      this.twitterShare("I'm challenging " + towake);
+			      bed_battles.createBattle(towake, otherid);
+			      
+			      $.ajax({
+					 dataType: "jsonp",
+					 url: "http://freezing-day-7773.herokuapp.com/fblookup/"+otherid,
+					 data: null,
+					 success: function(data) {
+					     console.log(data);
+					 }
+				     });
+			      
+			      $.post("http://freezing-day-7773.herokuapp.com/addphone/", {"currentUser": currentUser,
+											  "phoneNumber": phonenumber,
+											  "otherid": otherid,
+											  "towake": towake},
+				     function(data) {
+					 console.log("data: ");
+					 console.log(data);
+				     });
+			  });
     };
     
     /*
