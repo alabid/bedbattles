@@ -227,10 +227,12 @@ this.run = function() {
     this.sendPhone = function() {
 	console.log("trying out stuff");
 	$("form#phone-number").submit(function(){
-					  var phonenumber = $("#phone-number").val();
+					  var phonenumber = $("#my-phone").val();
+					  var otherid = $("#other-fb-id").val();
 
 					  $.post("/addphone/", {"currentUser": currentUser,
-							       "phoneNumber": phonenumber},
+							       "phoneNumber": phonenumber,
+							       "otherid": otherid},
 						function(data) {
 						    console.log("data: ");
 						    console.log(data);
