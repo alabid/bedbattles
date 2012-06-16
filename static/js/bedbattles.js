@@ -150,7 +150,7 @@ this.run = function() {
 			  fb_loads();
 
 	// 		  console.log("came here");
-	//		  bed_battles.sendPhone();
+			  bed_battles.sendPhone();
 			 //  bed_battles.twitterShare();
 		      });
 
