@@ -5,6 +5,7 @@ from flask import render_template
 from flask import request
 from pymongo import Connection
 from twilio.rest import TwilioRestClient
+from datetime import datetime
 app = Flask(__name__)
 
 @app.route('/')
@@ -46,6 +47,7 @@ def sms(uid):
 		battles = db.battles
 		users = db.users
 		battle = battles.find_one({"$or" : [ {"user1" : uid}, {"user2": uid} ]})
+		battleid = battle['battleid']
 		if battle['user1'] == uid:
 			opponentid = battle['user2']
 		if battle['user2'] == uid:
@@ -53,11 +55,23 @@ def sms(uid):
 
 		opponentdoc = users.find_one({'uid' : opponentid})
 		opponent = opponentdoc['name']
-		challengeURL = 'void'
+		challengeURL = 'http://freezing-day-7773.herokuapp.com/battle/'+battleid+'/'+uid
 		message = client.sms.messages.create(to="+19145884793", from_="+14155992671", body="Good morning! Start your BedBattle with "+opponent+": "+challengeURL)
 		return "success"
 	#except:
 		#return "failure"
+
+@app.route('/battle/<battleid>/<uid>', methods=['GET', 'POST'])
+def battle(battleid, uid):
+	try:
+		connection = Connection("mongodb://heroku:54cce0fe06c2ec87c6c0ede29923b6e0@flame.mongohq.com:27028/app5293195")
+		db = connection.app5293195
+		wakeups = db.wakeups
+		timestamp = datetime.now()
+		post = {"battleid": battleid, "uid": uid, "time": timestamp}
+		return render_template("/battles/1.html")
+	except:
+		return "failure"
 
 if __name__ == '__main__':
 	port = int(os.environ.get('PORT', 55641))
