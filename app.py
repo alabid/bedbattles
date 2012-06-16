@@ -55,8 +55,11 @@ def sms(uid):
 
 		opponentdoc = users.find_one({'uid' : opponentid})
 		opponent = opponentdoc['name']
+
+		userdoc = users.find_one({'uid': uid})
+		phone = "+1"+userdoc['phone']
 		challengeURL = 'http://freezing-day-7773.herokuapp.com/battle/'+battleid+'/'+uid
-		message = client.sms.messages.create(to="+19145884793", from_="+14155992671", body="Good morning! Start your BedBattle with "+opponent+": "+challengeURL)
+		message = client.sms.messages.create(to=phone, from_="+14155992671", body="Good morning! Start your BedBattle with "+opponent+": "+challengeURL)
 		return "success"
 	#except:
 		#return "failure"
@@ -87,7 +90,7 @@ def battle(battleid, uid):
 		post = {"battleid": battleid, "uid": uid, "month": month, "day": day, "hour": hour, "minute": minute, "win": "false"}
 		wakeups.insert(post)
 		#return "success"
-		return render_template("/templates/game.html")
+		return render_template("game.html")
 	#except:
 		#return "failure"
 
