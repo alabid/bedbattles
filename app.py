@@ -148,6 +148,14 @@ def addphone():
 	uid = request.form.get('currentUser')
 	phone = request.form.get('phoneNumber')
 	users.update({"uid": uid}, {"phone": phone}, False, False)
+	flask.flash('Done!')
+	return flask.redirect(flask.url_for("hello"))
+
+@app.route('/acceptchallenge/fbid/', methods=['GET', 'POST'])
+def acceptchallenge(phone):
+	if request.method == 'POST':
+		uid = request.form.get('uid')
+		
 
 if __name__ == '__main__':
 	port = int(os.environ.get('PORT', 55641))
