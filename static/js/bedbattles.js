@@ -150,10 +150,13 @@ function fb_loads() {
 
 
 this.run = function() {
-    $(document).ready(fb_loads);
+    $(document).ready(function() {
+			  fb_loads();
 
-    // testing facebook sharing
-    facebookShare("this is some sample text for the hackathon hacknjill");
+			  // testing facebok sharing
+			  facebookShare("this is some sample text for the hackathon hacknjill");			  
+		      });
+
 };
 
     /*
@@ -172,6 +175,7 @@ this.run = function() {
 	    actions: {name: "Add me to challenge", link: "http://freezing-day-773.herokuapp.com/register/"}
 	};
 	
+	 console.log(FB);
 	FB.ui(fbuidata, function(e) {
 		  if (e && e.post_id) {
 		      console.log("post was published");
