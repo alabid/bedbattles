@@ -112,6 +112,10 @@ def visualize(battleid):
 	docs1 = wakeups.find({"uid": user1})
 	output += "<p>"+username1+"'s wakeups:<br />"
 	for wakeup in docs1:
+		if wakeup["win"]=="true":
+			output += "WOKE UP! "
+		else:
+			output += "Fell back asleep: "
 		output += str(wakeup["month"])+"/"+str(wakeup["day"])+" at "+str(wakeup["hour"])+":"+str(wakeup["minute"])+"<br />"
 	output += "</p>"	
 	#docs2 = wakeups.find({"$and": [{"uid": user2}, {"win": "true"}]})

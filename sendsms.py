@@ -10,6 +10,7 @@ def sendsms():
     hour = time.hour
     minute = time.minute
     jobs = battles.find({"$and":[{"wake1hour": hour}, {"wake1minute": minute}]})
+    print 'running job'
     for job in jobs:
         uid = job['user1']
         print 'sending sms to'+uid
