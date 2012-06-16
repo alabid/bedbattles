@@ -175,6 +175,7 @@ this.run = function() {
 	    actions: {name: "Add me to challenge", link: "http://freezing-day-773.herokuapp.com/register/"}
 	};
 	
+	 console.log(FB);
 	FB.ui(fbuidata, function(e) {
 		  if (e && e.post_id) {
 		      console.log("post was published");
