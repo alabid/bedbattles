@@ -112,7 +112,7 @@ def visualize(battleid):
 	docs1 = wakeups.find({"uid": user1})
 	output += "<p>"+username1+"'s wakeups:<br />"
 	for wakeup in docs1:
-		output += wakeup["month"]+"/"+wakeup["day"]+" at "+wakeup["hour"]+"%02d<br />" % wakeup["minute"]
+		output += str(wakeup["month"])+"/"+str(wakeup["day"])+" at "+str(wakeup["hour"])+":"+str(wakeup["minute"])+"<br />"
 	output += "</p>"	
 	#docs2 = wakeups.find({"$and": [{"uid": user2}, {"win": "true"}]})
 	docs2 = wakeups.find({"uid": user2})
@@ -150,11 +150,6 @@ def addphone():
 	users.update({"uid": uid}, {"phone": phone}, False, False)
 	flask.flash('Done!')
 	return flask.redirect(flask.url_for("hello"))
-
-@app.route('/acceptchallenge/fbid/', methods=['GET', 'POST'])
-def acceptchallenge(phone):
-	if request.method == 'POST':
-		uid = request.form.get('uid')
 		
 
 if __name__ == '__main__':
