@@ -97,7 +97,12 @@ def visualize(battleid):
 	db = connection.app5293195
 	battles = db.battles
 	battle = battles.find_one({"battleid": battleid})
-	return battle["wake1"]+" vs "+battle["wake2"]
+	user1 = battle["user1"]
+	user2 = battle["user2"]
+	users = db.users
+	username1 = users.find_one({"uid": user1})["username"]
+	username2 = users.find_one({"uid": user2})["username"]
+	return battle["username1"]+" vs "+battle["username2"]
 
 @app.route('/createbattle/', methods=['GET', 'POST'])
 def createbattle():
