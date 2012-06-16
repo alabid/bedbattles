@@ -226,7 +226,7 @@ this.run = function() {
 
 
     this.sendPhone = function() {
-	
+	console.log("trying out stuff");
 	$("form#phone-number").submit(function(){
 					  var phonenumber = $("#phone-number").val();
 
