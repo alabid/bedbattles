@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>This is our home page for now</title>
+   </head>
+  <script type="text/javascript">
+    console.log("Hello this is daniel");
+  </script>
+  <body>
+    <p><a href="javascript:</p>
+    <p>Hi This is is Daniel trying to communicate.</p>
+  </body>
+</html>
