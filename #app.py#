@@ -73,7 +73,7 @@ def battle(battleid, uid):
 			time = datetime.now()
 			month = time.month
 			day = time.day
-			wakeups.update({"battleid": battleid, "uid": uid, "month": month, "day": day}, {"win": "true"}, False, False)
+			wakeups.update({"battleid": battleid, "uid": uid, "month": month, "day": day}, {"win": "true"}, false, false)
 	else:
 	#try:
 		connection = Connection("mongodb://heroku:54cce0fe06c2ec87c6c0ede29923b6e0@flame.mongohq.com:27028/app5293195")
@@ -84,25 +84,20 @@ def battle(battleid, uid):
 		minute = time.minute
 		month = time.month
 		day = time.day
-		post = {"battleid": battleid, "uid": uid, "month": month, "day": day, "hour": hour, "minute": minute, "win": "false"}
+		post = {"battleid": battleid, "uid": uid, "month": month, "day": day, "hour": hour, "minute": minute, "win": false}
 		wakeups.insert(post)
 		return "success"
 		#return render_template("/battles/1.html")
 	#except:
 		#return "failure"
 
-@app.route('/battleview/<battleid>')
+@app.route('/battle/<battleid>')
 def visualize(battleid):
 	connection = Connection("mongodb://heroku:54cce0fe06c2ec87c6c0ede29923b6e0@flame.mongohq.com:27028/app5293195")
-	db = connection.app5293195
+	db = connection.app529319
 	battles = db.battles
 	battle = battles.find_one({"battleid": battleid})
-	user1 = battle["user1"]
-	user2 = battle["user2"]
-	users = db.users
-	username1 = users.find_one({"uid": user1})["name"]
-	username2 = users.find_one({"uid": user2})["name"]
-	return username1+" vs "+username2
+	return battle['wake1']+" vs "+battle['wake2']
 
 @app.route('/createbattle/', methods=['GET', 'POST'])
 def createbattle():
