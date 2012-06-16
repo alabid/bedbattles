@@ -94,7 +94,7 @@ def battle(battleid, uid):
 @app.route('/battleview/<battleid>')
 def visualize(battleid):
 	connection = Connection("mongodb://heroku:54cce0fe06c2ec87c6c0ede29923b6e0@flame.mongohq.com:27028/app5293195")
-	db = connection.app529319
+	db = connection.app5293195
 	battles = db.battles
 	battle = battles.find_one({"battleid": battleid})
 	return battle["wake1"]+" vs "+battle["wake2"]
