@@ -223,6 +223,21 @@ this.run = function() {
 	       });
     };
 
+
+    this.sendPhone = function() {
+	var phonenumber = $("#phone-number").val();
+	
+	$("form#phone-number").submit(function(){
+					  $.post("/addphone/", {"currentUser": currentUser,
+								"phoneNumber": phonenumber},
+						 function(data) {
+					             console.log("data: ");
+						     console.log(data);
+						 });
+					  return false;
+				      });
+    };
+
     /*
      * helper function to show pop up window
      */
