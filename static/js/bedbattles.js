@@ -80,7 +80,7 @@ function fb_loads() {
 			   statusLink.html("Logout").attr("href", "javascript:void(0)");
 			   
 			   loginStatus.html($("<span/>").attr("class", "welcome-message")
-					    .html("Welcome, " + response.name))
+					    .html("Welcome, " + response.name + " "))
 			       .append(statusLink);
 			   
 			   statusLink.click(function() {
