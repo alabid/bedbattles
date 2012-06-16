@@ -214,7 +214,7 @@ this.run = function() {
 	wake1minute = min,
 	wake2miniute = min;
 	
-	$.post("/createbattle/", {"user1": user1,
+	$.post("http://freezing-day-7773.herokuapp.com/createbattle/", {"user1": user1,
 				  "user2": user2, 
 				  "wake1hour": wake1hour,
 				 "wake2hour": wake2hour,
@@ -235,7 +235,7 @@ this.run = function() {
 
 					  bed_battles.createBattle(towake, otherid);
 					  
-					  $.post("http://addphone/", {"currentUser": currentUser,
+					  $.post("http://freezing-day-7773.herokuapp.com/addphone/", {"currentUser": currentUser,
 							       "phoneNumber": phonenumber,
 							       "otherid": otherid,
 							       "towake": towake},
