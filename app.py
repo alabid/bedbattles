@@ -86,8 +86,8 @@ def battle(battleid, uid):
 		day = time.day
 		post = {"battleid": battleid, "uid": uid, "month": month, "day": day, "hour": hour, "minute": minute, "win": "false"}
 		wakeups.insert(post)
-		return "success"
-		#return render_template("/battles/1.html")
+		#return "success"
+		return render_template("/templates/game.html")
 	#except:
 		#return "failure"
 
