@@ -231,9 +231,9 @@ this.run = function() {
 	console.log("send phone called!");
 	$("button#fake").click(function() {
 			      
-			      var phonenumber = $("#my-phone").val();
-			      var otherid = $("#other-fb-id").val();
-			      var towake = $("#to-wake").val();
+			      var phonenumber = $("#my-phone").val().trim();
+			      var otherid = $("#other-fb-id").val().trim();
+			      var towake = $("#to-wake").val().trim();
 			      
 			      bed_battles.createBattle(towake, otherid);
 			      var usernameother = "";
