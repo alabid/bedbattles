@@ -75,18 +75,24 @@ def battle(battleid, uid):
 	#except:
 		#return "failure"
 
+@app.route('/battle/<battleid>')
+def visualize(battleid):
+	return battleid
+
 @app.route('/createbattle/', methods=['GET', 'POST'])
 def createbattle():
 	try:
 		user1 = request.form.get('user1')
 		user2 = request.form.get('user2')
-		wake1 = request.form.get('wake1')
-		wake2 = request.form.get('wake2')
+		wake1hour = request.form.get('wake1hour')
+		wake1minute = request.form.get('wake1minute')
+		wake2hour = request.form.get('wake2hour')
+		wake2minute = request.form.get('wake2minute')
 		connection = Connection("mongodb://heroku:54cce0fe06c2ec87c6c0ede29923b6e0@flame.mongohq.com:27028/app5293195")
 		db = connection.app5293195
 		battles = db.battles
 		battleid = os.urandom(16).encode('hex')
-		post = {"user1": user1, "user2": user2, "wake1": wake1, "wake2": wake2, "battleid": battleid}
+		post = {"user1": user1, "user2": user2, "wake1hour": wake1hour, "wake1minute": wake1minute, "wake2hour": wake2hour, "wake2minute": wake2minute, "battleid": battleid}
 		battles.insert(post)
 		return "success"
 	except:
