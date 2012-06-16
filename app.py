@@ -100,9 +100,9 @@ def visualize(battleid):
 	user1 = battle["user1"]
 	user2 = battle["user2"]
 	users = db.users
-	username1 = users.find_one({"uid": user1})["username"]
-	username2 = users.find_one({"uid": user2})["username"]
-	return battle["username1"]+" vs "+battle["username2"]
+	username1 = users.find_one({"uid": user1})["name"]
+	username2 = users.find_one({"uid": user2})["name"]
+	return username1+" vs "+username2
 
 @app.route('/createbattle/', methods=['GET', 'POST'])
 def createbattle():
