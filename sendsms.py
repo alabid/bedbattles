@@ -1,7 +1,7 @@
 from pymongo import Connection
 from datetime import datetime
 
-def sendsms(battleid):
+def sendsms():
     connection = Connection("mongodb://heroku:54cce0fe06c2ec87c6c0ede29923b6e0@flame.mongohq.com:27028/app5293195")
     db = connection.app5293195
     battles = db.battles
@@ -16,3 +16,5 @@ def sendsms(battleid):
         urllib2.urlopen(url)
     
     
+if __name__ == '__main__':
+    sendsms()
