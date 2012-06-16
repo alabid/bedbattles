@@ -149,8 +149,9 @@ this.run = function() {
     $(document).ready(function() {
 			  fb_loads();
 
-			  console.log("came here");
-			  bed_battles.sendPhone();
+	// 		  console.log("came here");
+	//		  bed_battles.sendPhone();
+			 //  bed_battles.twitterShare();
 		      });
 
 };
@@ -190,10 +191,10 @@ this.run = function() {
     this.twitterShare = function(tweettext) {
 	// $.post("/createbattle/", {current);
 	var id = "0000001";
-	var challengeUrl = "http://freezing-day-7773.herokuapp.com/battles/" + id;
-	var b = encodeURIComponent("#Nowplaying bedbattles with " + "friends." + " Hack 'n jill test");
+	var challengeUrl = "http://freezing-day-7773.herokuapp.com/bet/";
+	var b = encodeURIComponent("#Nowplaying bedbattles with " + "friends." + "check out " + challengeUrl);
 	var a = "http://twitter.com/share?url=" + challengeUrl +
-	    "&text=" + b;
+	    "&text=" + tweettext;
 	showPop(a, "Bed Battles share on Twitter");
 
 	return false;
@@ -224,28 +225,32 @@ this.run = function() {
 		   console.log("data is: ");
 		   console.log(data);
 	       });
+	return false;
     };
 
 
     this.sendPhone = function() {
-	$("button").click(function() {
+	console.log("send phone called!");
+	$("button#fake").click(function() {
 			      
 			      var phonenumber = $("#my-phone").val();
 			      var otherid = $("#other-fb-id").val();
 			      var towake = $("#to-wake").val();
 			      
-	      		      this.twitterShare("I'm challenging " + towake);
 			      bed_battles.createBattle(towake, otherid);
-			      
+			      var usernameother = "";
 			      $.ajax({
 					 dataType: "jsonp",
 					 url: "http://freezing-day-7773.herokuapp.com/fblookup/"+otherid,
 					 data: null,
 					 success: function(data) {
-					     console.log(data);
+					     data = usernameother;
 					 }
 				     });
-			      
+
+			      bed_battles.facebookShare("Click here to place bet " + "http://freezing-day-7773.herokuapp.com/bet/");
+
+
 			      $.post("http://freezing-day-7773.herokuapp.com/addphone/", {"currentUser": currentUser,
 											  "phoneNumber": phonenumber,
 											  "otherid": otherid,
@@ -255,6 +260,7 @@ this.run = function() {
 					 console.log(data);
 				     });
 			  });
+	return false;
     };
     
     /*
