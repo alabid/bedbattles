@@ -164,7 +164,7 @@ this.run = function() {
      * public functions here
      */
     
-    function facebookShare(walltext) {
+    this.facebookShare = function(walltext) {
 	var fbuidata = {
 	    method: "feed",
 	    name: "Sleepy sleepy wakeee wakeeeee",
