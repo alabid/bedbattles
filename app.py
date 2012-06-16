@@ -107,7 +107,7 @@ def visualize(battleid):
 	users = db.users
 	username1 = users.find_one({"uid": user1})["name"]
 	username2 = users.find_one({"uid": user2})["name"]
-	output = ""
+	output = "<body><img src='/static/img/BedBattles.gif' />"
 	output += "<h1>"+username1+" vs "+username2+"</h1><br />"
 	wakeups = db.wakeups
 	p1win = False
@@ -140,6 +140,7 @@ def visualize(battleid):
 		output += "<h3>"+username2+" wins!</h3>"
 	else:
 		output += "<h3>Game is in progress</h3>"
+	output += "</body>"
 	return output
 
 @app.route('/createbattle/', methods=['GET', 'POST'])
