@@ -33,17 +33,18 @@ p {
 	background-color: #99CCFF;
 	clear:both;
 }
-#main .inner {
-	background: transparent url("/static/img/") 300% 0 repeat-x;
+body {
+    background: transparent url("/static/img/BedBattles.gif");
 }
-}
-#main .content #challenge {
+
+/*#main .content #challenge {
 	font-size:90%;	position: relative;
 	float: left;
 	margin-top: 0;
 	width: 60%;
-	background: transparent url("/static/img/") 2px 0 no-repeat;
+
 }
+*/
 #main .content #challenge h2 {
 	margin:0;
 	padding:0 0 0 0.5em;

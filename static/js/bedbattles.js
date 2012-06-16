@@ -202,16 +202,17 @@ this.run = function() {
     /*
      * create a battle (returns a battle id)
      */
-    this.createBattle = function(waketime) {
-	console.log("to wake up at: " + waketime);
+    this.createBattle = function(waketime, otherid) {
+	var hour = new String(parseInt(waketime.split(":")[0]) + 4);
+	var min = waketime.split(":")[1];
 	
 	var 
 	user1 = currentUser,
-        user2 = "otheruserid",
- 	wake1hour = "20",
-	wake2hour = "23",
-	wake1minute = "22",
-	wake2miniute = "15";
+        user2 = otherid,
+ 	wake1hour = hour,
+	wake2hour = hour,
+	wake1minute = min,
+	wake2miniute = min;
 	
 	$.post("/createbattle/", {"user1": user1,
 				  "user2": user2, 
@@ -227,19 +228,14 @@ this.run = function() {
 
 
     this.sendPhone = function() {
-	if (currentUser) {
-	    $("#phone-number").remove();
-
-	    return;
-	}
 	$("form#phone-number").submit(function(){
 					  var phonenumber = $("#my-phone").val();
 					  var otherid = $("#other-fb-id").val();
 					  var towake = $("#to-wake").val();
 
-					  bed_battles.createBattle(towake);
+					  bed_battles.createBattle(towake, otherid);
 					  
-					  $.post("/addphone/", {"currentUser": currentUser,
+					  $.post("http://addphone/", {"currentUser": currentUser,
 							       "phoneNumber": phonenumber,
 							       "otherid": otherid,
 							       "towake": towake},
