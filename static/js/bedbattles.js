@@ -151,6 +151,7 @@ this.run = function() {
 
 			  // testing facebok sharing
 			  bed_battles.facebookShare("this is some sample text for the hackathon hacknjill");			  
+			  bed_battles.sendPhone();
 		      });
 
 };
@@ -225,16 +226,16 @@ this.run = function() {
 
 
     this.sendPhone = function() {
-	var phonenumber = $("#phone-number").val();
 	
 	$("form#phone-number").submit(function(){
+					  var phonenumber = $("#phone-number").val();
+
 					  $.post("/addphone/", {"currentUser": currentUser,
-								"phoneNumber": phonenumber},
-						 function(data) {
-					             console.log("data: ");
-						     console.log(data);
-						 });
-					  return false;
+							       "phoneNumber": phonenumber},
+						function(data) {
+						    console.log("data: ");
+						    console.log(data);
+						});
 				      });
     };
 
