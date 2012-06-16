@@ -16,6 +16,8 @@
 	  $.post("http://freezing-day-7773.herokuapp.com/register/",
 		 data,
 		 function(data) {
+		     console.log("received data: ");
+		     console.log(data);
 		     if (typeof data != undefined) {
 			 switch (data)  {
 			 case "success":
@@ -61,7 +63,9 @@ function fb_loads() {
 	function updateButton(response) {
 	    var loginStatus = $("#login-status").html("");
 	    var statusLink = $("<a/>"); // status link is a new link
-	    
+
+	    console.log("in updateButton");
+
 	    if (response.authResponse) {
 		FB.api("/me", function(response) {
 			   currentUser = response.username || "none";
@@ -72,7 +76,7 @@ function fb_loads() {
 			   
 			   reloadPageDetails();
 			   
-			   statusLink.html("Logoout").attr("href", "javascript:void(0)");
+			   statusLink.html("Logout").attr("href", "javascript:void(0)");
 			   
 			   loginStatus.html($("<span/>").attr("class", "welcome-message")
 					    .html("Welcome, " + response.name))
