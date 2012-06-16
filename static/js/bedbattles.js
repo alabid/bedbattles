@@ -212,7 +212,7 @@ this.run = function() {
  	wake1hour = hour,
 	wake2hour = hour,
 	wake1minute = min,
-	wake2miniute = min;
+	wake2minute = min;
 	
 	$.post("http://freezing-day-7773.herokuapp.com/createbattle/", {"user1": user1,
 				  "user2": user2, 
