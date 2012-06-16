@@ -181,7 +181,6 @@ this.run = function() {
 		  }
 	      });    
 	
-	return false;
     }; 
 
     /*
