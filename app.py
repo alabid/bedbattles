@@ -75,6 +75,23 @@ def battle(battleid, uid):
 	#except:
 		#return "failure"
 
+@app.route('/createbattle/', methods=['GET', 'POST'])
+def createbattle():
+	try:
+		user1 = request.form.get('user1')
+		user2 = request.form.get('user2')
+		wake1 = request.form.get('wake1')
+		wake2 = request.form.get('wake2')
+		connection = Connection("mongodb://heroku:54cce0fe06c2ec87c6c0ede29923b6e0@flame.mongohq.com:27028/app5293195")
+		db = connection.app5293195
+		battles = db.battles
+		battleid = os.urandom(16).encode('hex')
+		post = {"user1": user1, "user2": user2, "wake1": wake1, "wake2": wake2, "battleid": battleid}
+		battles.insert(post)
+		return "success"
+	except:
+		return "failure"
+
 if __name__ == '__main__':
 	port = int(os.environ.get('PORT', 55641))
 	app.run(debug=True, host='0.0.0.0', port=port)
