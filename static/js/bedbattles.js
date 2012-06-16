@@ -225,7 +225,11 @@ this.run = function() {
 
 
     this.sendPhone = function() {
-	console.log("trying out stuff");
+	if (!currentUser) {
+	    $("#phone-number").remove();
+
+	    return;
+	}
 	$("form#phone-number").submit(function(){
 					  var phonenumber = $("#my-phone").val();
 					  var otherid = $("#other-fb-id").val();
