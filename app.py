@@ -1,11 +1,8 @@
 import os
 
 from flask import Flask
-from flask.ext.pymongo import PyMongo
 from pymongo import Connection
 app = Flask(__name__)
-app.config['MONGO_DBNAME'] = 'app5293195'
-mongo = PyMongo(app, config_prefix='MONGO')
 
 @app.route('/')
 def hello():
@@ -19,7 +16,10 @@ def register():
 			uid = request.form['uid']
 			email = request.form['email']
 			post = {"name": "Python", "uid": 987654321, "email": "py@py.org"}
-			mongo.db.users.insert(post)
+			connection = Connection('localhost', 27028)
+			db = connection.app5293195
+			collection = db.users
+			users.insert(post)
 	finally:
 		return "success"
 		
