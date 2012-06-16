@@ -3,6 +3,7 @@ import os
 from flask import Flask
 from flask import render_template
 from pymongo import Connection
+from twilio.rest import TwilioRestClient
 app = Flask(__name__)
 
 @app.route('/')
@@ -33,7 +34,15 @@ def register():
 		
 @app.route('/sms/<uid>', methods=['GET', 'POST'])
 def sms(uid):
-	return "testing"
+	try:
+		account = "AC720f0500e36bbb4afa8e2d52e360e3ba"
+		token = "bb5de69f671b98f875277f69c0d0b497"
+		client = TwilioRestClient(account, token)
+
+		message = client.sms.messages.create(to="+19145884793", from_="+14155992671", body="Good morning!")
+		return "success"
+	except:
+		return "failure"
 
 if __name__ == '__main__':
 	port = int(os.environ.get('PORT', 55641))
