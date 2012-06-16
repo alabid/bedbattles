@@ -149,7 +149,7 @@ function fb_loads() {
 
 
 
-var _run = function() {
+this.run = function() {
     $(document).ready(fb_loads);
 
     // testing facebook sharing
@@ -186,4 +186,4 @@ var _run = function() {
 
 window["bed_battles"] = new bedbattles();
 
-bed_battles._run(); // main method entry to application
+bed_battles.run(); // main method entry to application
