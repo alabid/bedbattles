@@ -97,7 +97,7 @@ def visualize(battleid):
 	db = connection.app529319
 	battles = db.battles
 	battle = battles.find_one({"battleid": battleid})
-	return battle['wake1']+" vs "+
+	return battle['wake1']+" vs "+battle['wake2']
 
 @app.route('/createbattle/', methods=['GET', 'POST'])
 def createbattle():
