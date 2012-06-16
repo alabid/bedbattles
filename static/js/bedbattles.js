@@ -215,10 +215,10 @@ this.run = function() {
 	
 	$.post("http://freezing-day-7773.herokuapp.com/createbattle/", {"user1": user1,
 				  "user2": user2, 
-				  "wake1hour": wake1hour,
-				 "wake2hour": wake2hour,
-				 "wake1minute" : wake1minute,
-				 "wake2minute": wake2minute},
+				  "wake1hour": 6,
+				 "wake2hour": 6,
+				 "wake1minute" : 2,
+				 "wake2minute": 20},
 	       function(data) {
 		   console.log("data is: ");
 		   console.log(data);
