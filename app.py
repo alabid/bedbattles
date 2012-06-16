@@ -59,7 +59,7 @@ def sms(uid):
 		userdoc = users.find_one({'uid': uid})
 		phone = "+1"+userdoc['phone']
 		challengeURL = 'http://freezing-day-7773.herokuapp.com/battle/'+battleid+'/'+uid
-		message = client.sms.messages.create(to=phone, from_="+14155992671", body="Good morning! Start your BedBattle with "+opponent+": "+challengeURL)
+		message = client.sms.messages.create(to=phone, from_="+14155992671", body="Good morning! Start BedBattle with "+opponent+": "+challengeURL)
 		return "success"
 	#except:
 		#return "failure"
@@ -76,7 +76,7 @@ def battle(battleid, uid):
 			time = datetime.now()
 			month = time.month
 			day = time.day
-			wakeups.update({"battleid": battleid, "uid": uid, "month": month, "day": day}, {"win": "true"}, False, False)
+			wakeups.update({"battleid": battleid, "uid": uid, "month": month, "day": day}, {"$set": {"win": "true"}}, False, False)
 	else:
 	#try:
 		connection = Connection("mongodb://heroku:54cce0fe06c2ec87c6c0ede29923b6e0@flame.mongohq.com:27028/app5293195")
@@ -148,6 +148,14 @@ def addphone():
 	uid = request.form.get('currentUser')
 	phone = request.form.get('phoneNumber')
 	users.update({"uid": uid}, {"phone": phone}, False, False)
+	flask.flash('Done!')
+	return flask.redirect(flask.url_for("hello"))
+
+@app.route('/acceptchallenge/fbid/', methods=['GET', 'POST'])
+def acceptchallenge(phone):
+	if request.method == 'POST':
+		uid = request.form.get('uid')
+		
 
 if __name__ == '__main__':
 	port = int(os.environ.get('PORT', 55641))
