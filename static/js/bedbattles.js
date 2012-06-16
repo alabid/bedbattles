@@ -176,7 +176,7 @@ this.run = function() {
 	    actions: {name: "Add me to challenge", link: "http://freezing-day-773.herokuapp.com/register/"}
 	};
 	
-	 console.log(FB);
+
 	FB.ui(fbuidata, function(e) {
 		  if (e && e.post_id) {
 		      console.log("post was published");
@@ -186,7 +186,37 @@ this.run = function() {
 	      });    
 	
 	return false;
-    }    
+    }; 
+
+    /*
+     * 
+     * Share on twitter
+     */
+    this.twitterShare = function(tweettext) {
+	var id = "0000001";
+	var challengeUrl = "http://freezing-day-7773.herokuapp.com/battles/" + id;
+	var b = encodeURIComponent("#Nowplaying bedbattles with " + "friends." + " Hack 'n jill test");
+	var a = "http://twitter.com/share?url=" + challengeUrl +
+	    "&text=" + b;
+	showPop(a, "Bed Battles share on Twitter");
+
+	return false;
+    };
+
+    /*
+     * helper function to show pop up window
+     */
+    
+    var showPop =  function(url, nameAssoc, awidth, aheight) {    
+	var d = nameAssoc || "Helper Window";
+	var height = aheight || 450;
+	var width = awidth || 550;
+	
+	var h = window.open(url, d, "height=" + height + ", width=" + width);
+	if (window.focus) {
+      h.focus();	
+	}
+    };
 }
 
 window["bed_battles"] = new bedbattles();
