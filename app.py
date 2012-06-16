@@ -63,12 +63,28 @@ def sms(uid):
 
 @app.route('/battle/<battleid>/<uid>', methods=['GET', 'POST'])
 def battle(battleid, uid):
+	if request.method == 'POST':
+		win = request.form.get("win")
+		if win=="true":
+			#add to db
+			connection = Connection("mongodb://heroku:54cce0fe06c2ec87c6c0ede29923b6e0@flame.mongohq.com:27028/app5293195")
+			db = connection.app5293195
+			wakeups = db.wakeups
+			time = datetime.now()
+			month = time.month
+			day = time.day
+			wakeups.update({"battleid": battleid, "uid": uid, "month": month, "day": day}, {"win": true}, false, false)
+	else:
 	#try:
 		connection = Connection("mongodb://heroku:54cce0fe06c2ec87c6c0ede29923b6e0@flame.mongohq.com:27028/app5293195")
 		db = connection.app5293195
 		wakeups = db.wakeups
-		timestamp = datetime.now()
-		post = {"battleid": battleid, "uid": uid, "time": timestamp}
+		time = datetime.now()
+		hour = time.hour
+		minute = time.minute
+		month = time.month
+		day = time.day
+		post = {"battleid": battleid, "uid": uid, "month": month, "day": day, "hour": hour, "minute": minute, "win": false}
 		wakeups.insert(post)
 		return "success"
 		#return render_template("/battles/1.html")
@@ -77,7 +93,11 @@ def battle(battleid, uid):
 
 @app.route('/battle/<battleid>')
 def visualize(battleid):
-	return battleid
+	connection = Connection("mongodb://heroku:54cce0fe06c2ec87c6c0ede29923b6e0@flame.mongohq.com:27028/app5293195")
+	db = connection.app529319
+	battles = db.battles
+	battle = battles.find_one({"battleid": battleid})
+	return battle['wake1']+" vs "+
 
 @app.route('/createbattle/', methods=['GET', 'POST'])
 def createbattle():
