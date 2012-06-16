@@ -25,12 +25,11 @@ def register():
 		duplicate = users.find_one({"uid": uid})
 		if not duplicate:
 			users.insert(post)
+			return "success"
 		else:
 			return "duplicate"
 	except:
 		return "failure"
-	finally:
-		return "success"
 		
 
 if __name__ == '__main__':
