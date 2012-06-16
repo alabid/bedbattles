@@ -59,7 +59,7 @@ def sms(uid):
 		userdoc = users.find_one({'uid': uid})
 		phone = "+1"+userdoc['phone']
 		challengeURL = 'http://freezing-day-7773.herokuapp.com/battle/'+battleid+'/'+uid
-		message = client.sms.messages.create(to=phone, from_="+14155992671", body="Good morning! Start your BedBattle with "+opponent+": "+challengeURL)
+		message = client.sms.messages.create(to=phone, from_="+14155992671", body="Good morning! Start BedBattle with "+opponent+": "+challengeURL)
 		return "success"
 	#except:
 		#return "failure"
