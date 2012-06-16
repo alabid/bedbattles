@@ -135,6 +135,12 @@ function fb_loads() {
 		loginStatus.html(statusLink);
 	    }
 	}
+
+	FB.api("/me/friends", function(response) {
+		   console.log("response -> ");
+		   console.log(response);
+	       });
+
 	// run once with current status and whenever the staus changes
 	FB.getLoginStatus(updateButton);
 	FB.Event.subscribe('auth.statusChange', updateButton);
