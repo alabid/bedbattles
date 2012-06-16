@@ -108,12 +108,14 @@ def visualize(battleid):
 	output = ""
 	output += username1+" vs "+username2+"<br />"
 	wakeups = db.wakeups
-	docs1 = wakeups.find({"$and": [{"uid": user1}, {"win": "true"}]})
+	#docs1 = wakeups.find({"$and": [{"uid": user1}, {"win": "true"}]})
+	docs1 = wakeups.find({"uid": user1})
 	output += "<p>"+username1+"'s wakeups:<br />"
 	for wakeup in docs1:
 		output += wakeup["month"]+"/"+wakeup["day"]+" at "+wakeup["hour"]+"%02d<br />" % wakeup["minute"]
 	output += "</p>"	
-	docs2 = wakeups.find({"$and": [{"uid": user2}, {"win": "true"}]})
+	#docs2 = wakeups.find({"$and": [{"uid": user2}, {"win": "true"}]})
+	docs2 = wakeups.find({"uid": user2})
 	output += "<p>"+username2+"'s wakeups:<br />"
 	for wakeup in docs2:
 		output += wakeup["month"]+"/"+wakeup["day"]+" at "+wakeup["hour"]+"%02d<br />" % wakeup["minute"]
