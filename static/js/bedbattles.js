@@ -13,7 +13,7 @@
 		     "currentUserEmail": currentUEmail,
 		     "currentUserName": currentUName};
 	  
-	  $.post("http://freezing-day-7773.herokuapp.com/register/",
+	  $.post("https://freezing-day-7773.herokuapp.com/register/",
 		 data,
 		 function(data) {
 		     console.log("received data: ");
