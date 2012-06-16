@@ -88,6 +88,9 @@ function fb_loads() {
 			   
 			   statusLink.click(function() {
 						FB.logout(function(response) {
+							      console.log("another response: ");
+							      console.log(response);
+							      
 							      currentUser = "";
 							      currentUserEmail = "";
 							      
@@ -108,6 +111,9 @@ function fb_loads() {
 		
 		statusLink.click(function() {
 				     FB.login(function(response) {
+						  console.log("rrreesssponse: ");
+						  console.log(response);
+
 	  					  if (response.authResponse) {
 	  	      				      currentUser = response.username || "none";
 	  	      				      currentUserEmail = response.email;
@@ -135,11 +141,6 @@ function fb_loads() {
 		loginStatus.html(statusLink);
 	    }
 	}
-
-	FB.api("/me/friends", function(response) {
-		   console.log("response -> ");
-		   console.log(response);
-	       });
 
 	// run once with current status and whenever the staus changes
 	FB.getLoginStatus(updateButton);
