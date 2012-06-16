@@ -248,7 +248,6 @@ this.run = function() {
 					 }
 				     });
 
-			      bed_battles.twitterShare("I'm challenging " + usernameother);      
 			      bed_battles.facebookShare("Click here to place bet " + "http://freezing-day-7773.herokuapp.com/bet/");
 
 
