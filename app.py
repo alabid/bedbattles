@@ -46,7 +46,7 @@ def sms(uid):
 		db = connection.app5293195
 		battles = db.battles
 		users = db.users
-		battle = battles.find_one({$or : [ {"user1" : uid}, {"user2": uid} ]})
+		battle = battles.find_one({"$or" : [ {"user1" : uid}, {"user2": uid} ]})
 		if battle['user1'] == uid:
 			opponentid = battle['user2']
 		if battle['user2'] == uid:
