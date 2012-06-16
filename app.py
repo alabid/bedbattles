@@ -127,10 +127,10 @@ def createbattle():
 	try:
 		user1 = request.form.get('user1')
 		user2 = request.form.get('user2')
-		wake1hour = request.form.get('wake1hour')
-		wake1minute = request.form.get('wake1minute')
-		wake2hour = request.form.get('wake2hour')
-		wake2minute = request.form.get('wake2minute')
+		wake1hour = int(request.form.get('wake1hour'))
+		wake1minute = int(request.form.get('wake1minute'))
+		wake2hour = int(request.form.get('wake2hour'))
+		wake2minute = int(request.form.get('wake2minute'))
 		connection = Connection("mongodb://heroku:54cce0fe06c2ec87c6c0ede29923b6e0@flame.mongohq.com:27028/app5293195")
 		db = connection.app5293195
 		battles = db.battles
@@ -140,17 +140,20 @@ def createbattle():
 		return "success"
 	except:
 		return "failure"
+
+
 @app.route('/addphone/<uid>/<phone>', methods=['POST'])
 def addphone():
-	connection = Connection("mongodb://heroku:54cce0fe06c2ec87c6c0ede29923b6e0@flame.mongohq.com:27028/app5293195")
-	db = connection.app5293195
-	users = db.users
-	uid = request.form.get('currentUser')
-	phone = request.form.get('phoneNumber')
-	users.update({"uid": uid}, {"phone": phone}, False, False)
-	flask.flash('Done!')
-	return flask.redirect(flask.url_for("hello"))
-		
+	try:
+		connection = Connection("mongodb://heroku:54cce0fe06c2ec87c6c0ede29923b6e0@flame.mongohq.com:27028/app5293195")
+		db = connection.app5293195
+		users = db.users
+		uid = request.form.get('currentUser')
+		phone = request.form.get('phoneNumber')
+		users.update({"uid": uid}, {"phone": phone}, False, False)
+		return "success"
+	except:
+		return "failure"
 
 if __name__ == '__main__':
 	port = int(os.environ.get('PORT', 55641))
