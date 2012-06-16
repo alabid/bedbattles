@@ -11,6 +11,7 @@ def sendsms(battleid):
     jobs = battles.find({"$and":[{"wake1hour": hour}, {"wake1minute": minute}]})
     for job in jobs:
         uid = job['user1']
+        print 'sending sms to'+uid
         url = 'http://freezing-day-7773.herokuapp.com/sms/'+uid
         urllib2.urlopen(url)
     
