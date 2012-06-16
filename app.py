@@ -6,6 +6,8 @@ from flask import request
 from pymongo import Connection
 from twilio.rest import TwilioRestClient
 from datetime import datetime
+import urllib2
+import simplejson
 app = Flask(__name__)
 
 @app.route('/')
@@ -122,6 +124,10 @@ def visualize(battleid):
 	docs2 = wakeups.find({"uid": user2})
 	output += "<p>"+username2+"'s wakeups:<br />"
 	for wakeup in docs2:
+		if wakeup["win"]=="true":
+			output += "WOKE UP! "
+		else:
+			output += "Fell back asleep: "
 		output += str(wakeup["month"])+"/"+str(wakeup["day"])+" at "+str(wakeup["hour"])+":"+str(wakeup["minute"])+"<br />"
 	output += "</p>"
 	return output
@@ -147,7 +153,7 @@ def createbattle():
 
 
 @app.route('/addphone/<uid>/<phone>', methods=['POST'])
-def addphone():
+def addphone(uid, phone):
 	try:
 		connection = Connection("mongodb://heroku:54cce0fe06c2ec87c6c0ede29923b6e0@flame.mongohq.com:27028/app5293195")
 		db = connection.app5293195
@@ -158,6 +164,15 @@ def addphone():
 		return "success"
 	except:
 		return "failure"
+
+@app.route('/fblookup/<fbid>', methods=['GET'])
+def fblookup(fbid):
+	req = urllib2.Request("https://graph.facebook.com/"+fbid)
+	opener = urllib2.build_opener()
+	f = opener.open(req)
+	x = simplejson.load(f)
+	name = x['name']
+	return name
 
 if __name__ == '__main__':
 	port = int(os.environ.get('PORT', 55641))
