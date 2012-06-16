@@ -228,6 +228,7 @@ this.run = function() {
 
 
     this.sendPhone = function() {
+	console.log("send phone called!");
 	$("button").click(function() {
 			      
 			      var phonenumber = $("#my-phone").val();
