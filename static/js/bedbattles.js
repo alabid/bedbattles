@@ -197,7 +197,6 @@ this.run = function() {
 	    "&text=" + tweettext;
 	showPop(a, "Bed Battles share on Twitter");
 
-	return false;
     };
 
     /*
@@ -266,8 +265,7 @@ this.run = function() {
     /*
      * helper function to show pop up window
      */
-    
-    var showPop =  function(url, nameAssoc, awidth, aheight) {    
+        var showPop =  function(url, nameAssoc, awidth, aheight) {    
 	var d = nameAssoc || "Helper Window";
 	var height = aheight || 450;
 	var width = awidth || 550;
