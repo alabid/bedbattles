@@ -25,5 +25,5 @@ def register():
 		
 
 if __name__ == '__main__':
-	port = int(os.environ.get('PORT', 5000))
+	port = int(os.environ.get('PORT', 55641))
 	app.run(debug=True)
