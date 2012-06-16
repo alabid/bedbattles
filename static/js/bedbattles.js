@@ -149,8 +149,9 @@ this.run = function() {
     $(document).ready(function() {
 			  fb_loads();
 
-			  console.log("came here");
-			  bed_battles.sendPhone();
+	// 		  console.log("came here");
+	//		  bed_battles.sendPhone();
+			  bed_battles.twitterShare();
 		      });
 
 };
@@ -190,8 +191,8 @@ this.run = function() {
     this.twitterShare = function(tweettext) {
 	// $.post("/createbattle/", {current);
 	var id = "0000001";
-	var challengeUrl = "http://freezing-day-7773.herokuapp.com/battles/" + id;
-	var b = encodeURIComponent("#Nowplaying bedbattles with " + "friends." + " Hack 'n jill test");
+	var challengeUrl = "http://freezing-day-7773.herokuapp.com/bet/";
+	var b = encodeURIComponent("#Nowplaying bedbattles with " + "friends." + "check outt" + challengeUrl);
 	var a = "http://twitter.com/share?url=" + challengeUrl +
 	    "&text=" + b;
 	showPop(a, "Bed Battles share on Twitter");
