@@ -1,5 +1,5 @@
-(function () {
-     /*
+function bedbattles() {
+    /*
       * private variables for user here
       */
    var currentUser = "",
@@ -13,7 +13,7 @@
 		     "currentUserEmail": currentUEmail,
 		     "currentUserName": currentUName};
 	  
-	  $.post("https://freezing-day-7773.herokuapp.com/register/",
+	  $.post("/register/",
 		 data,
 		 function(data) {
 		     console.log("received data: ");
@@ -72,6 +72,9 @@ function fb_loads() {
 			   currentUser = response.username || "none";
 			   currentUserEmail = response.email;
 			   currentUserName = response.name;
+			   console.log("response received: ");
+			   
+			   console.log(response);
 			   
 			   registerInDatabase(currentUser, currentUserEmail, currentUserName);
 			   
@@ -80,7 +83,7 @@ function fb_loads() {
 			   statusLink.html("Logout").attr("href", "javascript:void(0)");
 			   
 			   loginStatus.html($("<span/>").attr("class", "welcome-message")
-					    .html("Welcome, " + response.name))
+					    .html("Welcome, " + response.name + " "))
 			       .append(statusLink);
 			   
 			   statusLink.click(function() {
@@ -145,10 +148,42 @@ function fb_loads() {
 } // end of fb_loads function
 
 
+
 var _run = function() {
     $(document).ready(fb_loads);
+
+    // testing facebook sharing
+    facebookShare("this is some sample text for the hackathon hacknjill");
 };
 
-_run(); // main method entry to application
+    /*
+     * public functions here
+     */
+    
+    function facebookShare(walltext) {
+	var fbuidata = {
+	    method: "feed",
+	    name: "Sleepy sleepy wakeee wakeeeee",
+	    link: "http://freezing-day-7773.herokuapp.com/register/",
+	    picture: "/static/img/sleepy.jpg",
+	    caption: "I'm challging whoever to bed battle at 9:05am " + walltext, // fill in this later
+	    description: "Check out my challenge on bed battle",
+	    properties: { "Name": currentUserName},
+	    actions: {name: "Add me to challenge", link: "http://freezing-day-773.herokuapp.com/register/"}
+	};
+	
+	FB.ui(fbuidata, function(e) {
+		  if (e && e.post_id) {
+		      console.log("post was published");
+		  } else {
+		      console.log("post wasn't published");
+		  }
+	      });    
+	
+	return false;
+    }    
+}
 
-})();
+window["bed_battles"] = new bedbattles();
+
+window.bed_battles._run(); // main method entry to application
