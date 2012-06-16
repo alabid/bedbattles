@@ -151,7 +151,7 @@ this.run = function() {
 
 	// 		  console.log("came here");
 	//		  bed_battles.sendPhone();
-			  bed_battles.twitterShare();
+			 //  bed_battles.twitterShare();
 		      });
 
 };
