@@ -108,15 +108,17 @@ def visualize(battleid):
 	output = ""
 	output += username1+" vs "+username2+"<br />"
 	wakeups = db.wakeups
-	docs1 = wakeups.find({"$and": [{"uid": user1}, {"win": "true"}]})
+	#docs1 = wakeups.find({"$and": [{"uid": user1}, {"win": "true"}]})
+	docs1 = wakeups.find({"uid": user1})
 	output += "<p>"+username1+"'s wakeups:<br />"
 	for wakeup in docs1:
 		output += wakeup["month"]+"/"+wakeup["day"]+" at "+wakeup["hour"]+"%02d<br />" % wakeup["minute"]
 	output += "</p>"	
-	docs2 = wakeups.find({"$and": [{"uid": user2}, {"win": "true"}]})
+	#docs2 = wakeups.find({"$and": [{"uid": user2}, {"win": "true"}]})
+	docs2 = wakeups.find({"uid": user2})
 	output += "<p>"+username2+"'s wakeups:<br />"
 	for wakeup in docs2:
-		output += wakeup["month"]+"/"+wakeup["day"]+" at "+wakeup["hour"]+"%02d<br />" % wakeup["minute"]
+		output += str(wakeup["month"])+"/"+str(wakeup["day"])+" at "+str(wakeup["hour"])+":"+str(wakeup["minute"])+"<br />"
 	output += "</p>"
 	return output
 
@@ -138,6 +140,14 @@ def createbattle():
 		return "success"
 	except:
 		return "failure"
+@app.route('/addphone/<uid>/<phone>', methods=['POST'])
+def addphone():
+	connection = Connection("mongodb://heroku:54cce0fe06c2ec87c6c0ede29923b6e0@flame.mongohq.com:27028/app5293195")
+	db = connection.app5293195
+	users = db.users
+	uid = request.form.get('currentUser')
+	phone = request.form.get('phoneNumber')
+	users.update({"uid": uid}, {"phone": phone}, False, False)
 
 if __name__ == '__main__':
 	port = int(os.environ.get('PORT', 55641))
