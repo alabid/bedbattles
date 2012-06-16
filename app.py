@@ -12,9 +12,9 @@ def hello():
 @app.route('/register/', methods=['GET', 'POST'])
 def register():
 	try:
-	       	username = request.form['username']
-       		uid = request.form['uid']
-		email = request.form['email']
+	       	username = request.form['currentUserName']
+       		uid = request.form['currentUser']
+		email = request.form['currentUserEmail']
 		#username = "test"
 		#uid = 123456789
 		#email = "testemail"
