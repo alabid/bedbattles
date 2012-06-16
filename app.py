@@ -102,7 +102,18 @@ def visualize(battleid):
 	users = db.users
 	username1 = users.find_one({"uid": user1})["name"]
 	username2 = users.find_one({"uid": user2})["name"]
-	return username1+" vs "+username2
+	print username1+" vs "+username2+"<br />"
+	wakeups = db.wakeups
+	docs1 = wakeups.find({"$and": [{"uid": user1}, {"win": "true"}]})
+	print "<p>"+username1+"'s wakeups:<br />"
+	for wakeup in docs1:
+		print wakeup["month"]+"/"+wakeup["day"]+" at "+wakeup["hour"]+"%02d<br />" % wakeup["minute"]
+	print "</p>"	
+	docs2 = wakeups.find({"$and": [{"uid": user2}, {"win": "true"}]})
+	print "<p>"+username2+"'s wakeups:<br />"
+	for wakeup in docs2:
+		print wakeup["month"]+"/"+wakeup["day"]+" at "+wakeup["hour"]+"%02d<br />" % wakeup["minute"]
+	print "</p>"
 
 @app.route('/createbattle/', methods=['GET', 'POST'])
 def createbattle():
