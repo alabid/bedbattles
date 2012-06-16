@@ -69,7 +69,8 @@ def battle(battleid, uid):
 		wakeups = db.wakeups
 		timestamp = datetime.now()
 		post = {"battleid": battleid, "uid": uid, "time": timestamp}
-		return render_template("/battles/1.html")
+		return "success"
+		#return render_template("/battles/1.html")
 	#except:
 		#return "failure"
 
