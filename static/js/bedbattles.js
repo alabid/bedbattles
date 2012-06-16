@@ -224,6 +224,7 @@ this.run = function() {
 		   console.log("data is: ");
 		   console.log(data);
 	       });
+	return false;
     };
 
 
@@ -259,6 +260,7 @@ this.run = function() {
 					 console.log(data);
 				     });
 			  });
+	return false;
     };
     
     /*
