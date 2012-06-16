@@ -1,12 +1,16 @@
 import os
 
 from flask import Flask
+<<<<<<< HEAD
 from pymongo import Connection
+=======
+import flask
+>>>>>>> 0947c4f35a0ee52045e005782a9a388eaab21e7b
 app = Flask(__name__)
 
 @app.route('/')
 def hello():
-	return 'Hello World!'
+	return flask.render_template("index.html")
 
 @app.route('/register/', methods=['POST'])
 def register(request):
@@ -20,7 +24,7 @@ def register(request):
 		users = db.users
 		post = {"name": "Python", "uid": 987654321, "email": "py@py.org"}
 		users.insert(post)
-		return flask.render_template("index.html")
+		return request.json
 
 if __name__ == '__main__':
 	port = int(os.environ.get('PORT', 5000))
