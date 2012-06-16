@@ -18,7 +18,7 @@ def register():
 		post = {"name": "Python", "uid": 987654321, "email": "py@py.org"}
 		connection = Connection('localhost', 27028)
 		db = connection.app5293195
-		collection = db.users
+		users = db.users
 		users.insert(post)
 	except:
 		return "failure"
