@@ -150,10 +150,13 @@ function fb_loads() {
 
 
 this.run = function() {
-    $(document).ready(fb_loads);
+    $(document).ready(function() {
+			  fb_loads();
 
-    // testing facebook sharing
-    facebookShare("this is some sample text for the hackathon hacknjill");
+			  // testing facebok sharing
+			  facebookShare("this is some sample text for the hackathon hacknjill");			  
+		      });
+
 };
 
     /*
