@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+}
+
+p {
+    color: black;
+}
+
+div#board {
+    text-align: center;
+    font-family: "Helvetica Neue";
+    font-size: 50;
+    color:rgb(0,255,0);
+    background-color:rgb(255,255,255);
+    margin: 0;
+    width: device-width;
+    height: 480;
+}
