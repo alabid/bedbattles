@@ -134,7 +134,7 @@ def visualize(battleid):
 
 @app.route('/createbattle/', methods=['GET', 'POST'])
 def createbattle():
-	try:
+	#try:
 		user1 = request.form.get('user1')
 		user2 = request.form.get('user2')
 		wake1hour = int(request.form.get('wake1hour'))
@@ -148,8 +148,8 @@ def createbattle():
 		post = {"user1": user1, "user2": user2, "wake1hour": wake1hour, "wake1minute": wake1minute, "wake2hour": wake2hour, "wake2minute": wake2minute, "battleid": battleid}
 		battles.insert(post)
 		return "success"
-	except:
-		return "failure"
+	#except:
+		#return "failure"
 
 
 @app.route('/addphone/<uid>/<phone>', methods=['POST'])
