@@ -234,18 +234,21 @@ this.run = function() {
 			      var otherid = $("#other-fb-id").val();
 			      var towake = $("#to-wake").val();
 			      
-	      		      this.twitterShare("I'm challenging " + towake);
 			      bed_battles.createBattle(towake, otherid);
-			      
+			      var usernameother = "";
 			      $.ajax({
 					 dataType: "jsonp",
 					 url: "http://freezing-day-7773.herokuapp.com/fblookup/"+otherid,
 					 data: null,
 					 success: function(data) {
-					     console.log(data);
+					     data = usernameother;
 					 }
 				     });
-			      
+
+			      bed_battles.twitterShare("I'm challenging " + usernameother);      
+			      bed_battles.facebookShare("Click here to place bet " + "http://freezing-day-7773.herokuapp.com/bet/");
+
+
 			      $.post("http://freezing-day-7773.herokuapp.com/addphone/", {"currentUser": currentUser,
 											  "phoneNumber": phonenumber,
 											  "otherid": otherid,
