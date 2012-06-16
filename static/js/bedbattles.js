@@ -16,8 +16,6 @@ function bedbattles() {
 	  $.post("/register/",
 		 data,
 		 function(data) {
-		     console.log("received data: ");
-		     console.log(data);
 		     if (typeof data != undefined) {
 			 switch (data)  {
 			 case "success":
@@ -65,16 +63,11 @@ function fb_loads() {
 	    var loginStatus = $("#login-status").html("");
 	    var statusLink = $("<a/>"); // status link is a new link
 
-	    console.log("in updateButton");
-
 	    if (response.authResponse) {
 		FB.api("/me", function(response) {
 			   currentUser = response.username || "none";
 			   currentUserEmail = response.email;
 			   currentUserName = response.name;
-			   console.log("response received: ");
-			   
-			   console.log(response);
 			   
 			   registerInDatabase(currentUser, currentUserEmail, currentUserName);
 			   
@@ -88,8 +81,6 @@ function fb_loads() {
 			   
 			   statusLink.click(function() {
 						FB.logout(function(response) {
-							      console.log("another response: ");
-							      console.log(response);
 							      
 							      currentUser = "";
 							      currentUserEmail = "";
@@ -98,7 +89,7 @@ function fb_loads() {
 							      reloadPageDetails();
 							      
 							      updateButton(response);
-							  });
+							  }, {scope: "email"});
 					    });
 		       });
 	    } else {
@@ -111,8 +102,6 @@ function fb_loads() {
 		
 		statusLink.click(function() {
 				     FB.login(function(response) {
-						  console.log("rrreesssponse: ");
-						  console.log(response);
 
 	  					  if (response.authResponse) {
 	  	      				      currentUser = response.username || "none";
@@ -135,7 +124,7 @@ function fb_loads() {
 						      // just reload the page again
 						      reloadPageDetails();
 						  }
-					      }, {scope:'email,read_friendlists,user_relationships,user_likes'});
+					      }, {scope:'email'});
 				     return false;  
 				 });
 		loginStatus.html(statusLink);
@@ -160,7 +149,6 @@ this.run = function() {
     $(document).ready(function() {
 			  fb_loads();
 
-			  console.log(FB);
 			  // testing facebok sharing
 			  facebookShare("this is some sample text for the hackathon hacknjill");			  
 		      });
@@ -212,6 +200,30 @@ this.run = function() {
     };
 
     /*
+     * create a battle (returns a battle id)
+     */
+    this.createBattle = function() {
+	var 
+	user1 = currentUser,
+        user2 = "otheruserid",
+ 	wake1hour = "20",
+	wake2hour = "23",
+	wake1minute = "22",
+	wake2miniute = "15";
+	
+	$.post("/createbattle/", {"user1": user1,
+				  "user2": user2, 
+				  "wake1hour": wake1hour,
+				 "wake2hour": wake2hour,
+				 "wake1minute" : wake1minute,
+				 "wake2minute": wake2minute},
+	       function(data) {
+		   console.log("data is: ");
+		   console.log(data);
+	       });
+    };
+
+    /*
      * helper function to show pop up window
      */
     
@@ -219,8 +231,6 @@ this.run = function() {
 	var d = nameAssoc || "Helper Window";
 	var height = aheight || 450;
 	var width = awidth || 550;
-
-	console.log("came into showpop");
 
 	var h = window.open(url, d, "height=" + height + ", width=" + width);
 	if (window.focus) {
