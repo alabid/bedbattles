@@ -151,6 +151,7 @@ this.run = function() {
 
 			  // testing facebok sharing
 			  bed_battles.facebookShare("this is some sample text for the hackathon hacknjill");			  
+			  console.log("came here");
 			  bed_battles.sendPhone();
 		      });
 
