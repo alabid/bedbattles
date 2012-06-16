@@ -200,6 +200,30 @@ this.run = function() {
     };
 
     /*
+     * create a battle (returns a battle id)
+     */
+    this.createBattle = function() {
+	var 
+	user1 = currentUser,
+        user2 = "otheruserid",
+ 	wake1hour = "20",
+	wake2hour = "23",
+	wake1minute = "22",
+	wake2miniute = "15";
+	
+	$.post("/createbattle/", {"user1": user1,
+				  "user2": user2, 
+				  "wake1hour": wake1hour,
+				 "wake2hour": wake2hour,
+				 "wake1minute" : wake1minute,
+				 "wake2minute": wake2minute},
+	       function(data) {
+		   console.log("data is: ");
+		   console.log(data);
+	       });
+    };
+
+    /*
      * helper function to show pop up window
      */
     
