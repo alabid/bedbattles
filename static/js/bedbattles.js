@@ -149,8 +149,8 @@ this.run = function() {
     $(document).ready(function() {
 			  fb_loads();
 
-			  // testing facebok sharing
-			  bed_battles.facebookShare("this is some sample text for the hackathon hacknjill");			  
+			  console.log("came here");
+			  bed_battles.sendPhone();
 		      });
 
 };
@@ -225,16 +225,18 @@ this.run = function() {
 
 
     this.sendPhone = function() {
-	var phonenumber = $("#phone-number").val();
-	
+	console.log("trying out stuff");
 	$("form#phone-number").submit(function(){
+					  var phonenumber = $("#my-phone").val();
+					  var otherid = $("#other-fb-id").val();
+
 					  $.post("/addphone/", {"currentUser": currentUser,
-								"phoneNumber": phonenumber},
-						 function(data) {
-					             console.log("data: ");
-						     console.log(data);
-						 });
-					  return false;
+							       "phoneNumber": phonenumber,
+							       "otherid": otherid},
+						function(data) {
+						    console.log("data: ");
+						    console.log(data);
+						});
 				      });
     };
 
