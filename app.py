@@ -53,7 +53,7 @@ def sms(uid):
 
 		opponentdoc = users.find_one({'uid' : opponentid})
 		opponent = opponentdoc['name']
-		challengeurl = 'void'
+		challengeURL = 'void'
 		message = client.sms.messages.create(to="+19145884793", from_="+14155992671", body="Good morning! Start your BedBattle with "+opponent+": "+challengeURL)
 		return "success"
 	#except:
