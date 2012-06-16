@@ -186,4 +186,4 @@ var _run = function() {
 
 window["bed_battles"] = new bedbattles();
 
-_run(); // main method entry to application
+window.bed_battles._run(); // main method entry to application
