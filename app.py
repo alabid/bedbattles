@@ -1,7 +1,6 @@
 import os
 
 from flask import Flask
-from flask.ext.pymongo import PyMongo
 from pymongo import Connection
 app = Flask(__name__)
 app.config['MONGO_DBNAME'] = 'app5293195'
