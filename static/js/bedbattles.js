@@ -150,7 +150,7 @@ this.run = function() {
 			  fb_loads();
 
 			  // testing facebok sharing
-			  facebookShare("this is some sample text for the hackathon hacknjill");			  
+			  bed_battles.facebookShare("this is some sample text for the hackathon hacknjill");			  
 		      });
 
 };
