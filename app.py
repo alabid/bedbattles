@@ -118,7 +118,7 @@ def visualize(battleid):
 	docs2 = wakeups.find({"uid": user2})
 	output += "<p>"+username2+"'s wakeups:<br />"
 	for wakeup in docs2:
-		output += str(wakeup["month"])+"/"+str(wakeup["day"])+" at "+str(wakeup["hour"])+":"+str(wakeup["minute"]+"<br />")
+		output += str(wakeup["month"])+"/"+str(wakeup["day"])+" at "+str(wakeup["hour"])+":"+str(wakeup["minute"])+"<br />"
 	output += "</p>"
 	return output
 
