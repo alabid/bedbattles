@@ -2,15 +2,47 @@
 <html>
   <head>
     <title>This is our home page for now</title>
-   </head>
-  <script type="text/javascript">
-    console.log("Hello this is daniel");
-  </script>
-  <body>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1">
+    <script type="text/javascript" src="/static/js/jquery.js"></script>
+    <script type="text/javascript" src="/static/js/bedbattles.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/bedbattles.css"/>
+  </head>
+ <body>
+ <div class="img">
+  <img src="/static/img/BedBattles.gif"/>
+  </div>
+  <div id="fb-root" class="fb_reset"></div>
+  <div id="main">
+  <div class="wrapper outer">
+  <div class="wrapper inner">
+  <div class="content">
+  <div id="challenge">
+  <h2>I Challenge:</h2>
+    <form id="phone-number">
+      <input id="to-wake" class="input-small" type="tel" placeholder="Time to wake"></input>
+      <input id="my-phone" class="input-small" type="tel" placeholder="My Phone"></input>
+      <input id="other-fb-id" class="input-small" type="tel" placeholder="Challenger facebook id"></input>
+      <button id="fake" onsubmit="bed_battles.sendPhone()" type="submit" class="btn">Set Up Challenge</button>
+    </form>
+
+    <a href="javascript:bed_battles.twitterShare('I\'m challenging a friend on bed battles. Place  a bet!  ')">Share on Twitter</a>
+    <br/>
+    <br/>
+    <a href="javascript:bed_battles.facebookShare('I\'m challenging a friend on bed battles. Place a bet! ')">Share on Facebook</a>
+    <br/>
+    <div id="explain">
+      <br/>
+    <p>We'll send a text to your challenge buddy. </br> </br> Get ready to wake up!</p>
+    </div> <!-- end explain -->
     <div id="login-status">
-      <a href="#">Login with Facebook</a>
-    </div>
-    <p>Hi This is is Daniel trying to communicate well.</p>
-    <p>I hope this shit works!</p>
+      <!-- Put some dummy debugging message there! -->
+      <a href="javascript:void(0)">Login with Facebook</a>
+    </div> <!-- end login-status -->
+    </div> <!-- end challenge -->
+    </div> <!-- end content -->
+    </div> <!-- end wrapper inner -->
+    </div> <!-- end wrapper outer -->
+    </div> <!-- end main -->
   </body>
 </html>

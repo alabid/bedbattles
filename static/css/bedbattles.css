@@ -24,19 +24,18 @@ p {
 	height:auto;
 	margin-left: 12.5%;
 	margin-right: auto;
+	padding: 10;
 }
 #main .outer {
 	padding: 5px 5px 5px 5px;
-	
 	margin: 15%;
-	margin-top: 0;
 	-webkit-border-radius: 15px; 
 	-moz-border-radius: 15px;
 	background-color: #99CCFF;
 	clear:both;
 }
 body {
-    /* background: transparent url("/static/img/BedBattles.gif"); */
+    background: transparent url("/static/img/BedBattles.gif");
     background-repeat: none;
 }
 
@@ -54,7 +53,7 @@ body {
 }
 #main .content #challenge p {
 	margin:0;
-	/* padding:20px 20px 20px 20px; */
+	padding:20px 20px 20px 20px;
 	color:#666;
 }
 #main .content #login-status p a {
