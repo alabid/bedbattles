@@ -42,7 +42,8 @@
     </div> <!-- end explain -->
     <div id="login-status">
       <!-- Put some dummy debugging message there! -->
-      <a href="javascript:void(0)">Login with Facebook</a>
+      <!-- <a href="javascript:void(0)">Login with Facebook</a> -->
+      <p>Login with Facebook</p>
     </div> <!-- end login-status -->
     </div> <!-- end challenge -->
     </div> <!-- end content -->
