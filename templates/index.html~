@@ -12,7 +12,7 @@
  <div class="img">
   <img src="/static/img/BedBattles.gif"/>
   </div>
- <h1 class="under-dev">
+ <h1 class="under-dev" align="center">
    This App is still under development! Not all features currently work!
  </h1>
   <div id="fb-root" class="fb_reset"></div>
