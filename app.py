@@ -1,3 +1,7 @@
+# TODO -- 
+# This code is pretty terrible, I duplicated a bunch of stuff to save time during the hackathon.
+# I also suspect that the way I executed db queries creates connection leaks for MongoDB... ooops....
+
 import os
 
 from flask import Flask
